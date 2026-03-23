@@ -3,142 +3,291 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-<title>Sophia: Community Strategy â Natalie Dayan</title>
+<title>Natalie Dayan Ã Sophia â Community &amp; Growth</title>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.2/babel.min.js"></script>
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Inter:wght@200;300;400;500;600&display=swap');
+
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-html,body{height:100%;font-family:'Inter',sans-serif;background:#f0ede4;color:#1a1a18;overflow-x:hidden;}
+html{scroll-behavior:smooth;}
+body{font-family:'Inter',sans-serif;background:#f0ede4;color:#0f0d0b;overflow-x:hidden;}
+
+:root{
+  --cream:#f0ede4;
+  --black:#0c0a08;
+  --gold:#c9a96e;
+  --gold-dim:rgba(201,169,110,.4);
+  --warm:#2a2218;
+  --muted:#8a8278;
+  --border:#ddd8ce;
+}
 
 /* âââ HERO âââ */
-.hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;padding:80px 20px 80px;background:#f0ede4;}
-.hero-badge{font-size:10px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:#8a7660;background:rgba(138,118,96,.1);border:1px solid rgba(138,118,96,.22);padding:6px 18px;border-radius:20px;margin-bottom:32px;}
-.hero h1{font-family:'Playfair Display',serif;font-size:clamp(2rem,5vw,3.5rem);font-weight:400;color:#1a1a18;text-align:center;line-height:1.25;max-width:700px;margin-bottom:18px;}
-.hero h1 em{font-style:italic;color:#8a7660;}
-.hero-sub{font-size:1rem;color:#6b6558;text-align:center;max-width:500px;line-height:1.75;margin-bottom:56px;font-weight:300;}
+.hero{
+  min-height:100vh;
+  background:var(--black);
+  display:flex;flex-direction:column;
+  justify-content:flex-end;
+  padding:0 64px 88px;
+  position:relative;overflow:hidden;
+}
+.hero-topbar{
+  position:absolute;top:0;left:0;right:0;
+  padding:40px 64px;
+  display:flex;justify-content:space-between;align-items:center;
+  z-index:3;
+  border-bottom:1px solid rgba(255,255,255,.04);
+}
+.hero-brand{font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);font-weight:400;}
+.hero-role-tag{font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:#3a3630;font-weight:300;}
+
+.hero-orb-a{
+  position:absolute;width:700px;height:700px;border-radius:50%;
+  background:radial-gradient(circle at 35% 35%,rgba(80,58,30,.9) 0%,rgba(30,20,10,.5) 45%,transparent 70%);
+  top:-280px;right:-220px;pointer-events:none;
+}
+.hero-orb-b{
+  position:absolute;width:300px;height:300px;border-radius:50%;
+  background:radial-gradient(circle,rgba(201,169,110,.07) 0%,transparent 70%);
+  bottom:120px;left:20%;pointer-events:none;
+}
+.hero-line{
+  position:absolute;top:0;bottom:0;left:50%;
+  width:1px;background:linear-gradient(to bottom,transparent,rgba(255,255,255,.04) 30%,rgba(255,255,255,.04) 70%,transparent);
+  pointer-events:none;
+}
+
+.hero-body{position:relative;z-index:2;}
+.hero-eyebrow{
+  font-size:10px;letter-spacing:.26em;text-transform:uppercase;color:var(--gold);
+  margin-bottom:32px;display:flex;align-items:center;gap:14px;
+}
+.hero-eyebrow::before{content:'';display:block;width:36px;height:1px;background:var(--gold);opacity:.5;}
+.hero-h1{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(3rem,6.5vw,5.8rem);
+  font-weight:400;color:var(--cream);
+  line-height:1.08;letter-spacing:-.015em;
+  margin-bottom:40px;max-width:860px;
+}
+.hero-h1 em{font-style:italic;color:var(--gold);}
+.hero-h1 span{display:block;}
+.hero-sub{
+  font-size:.9rem;color:#4a4640;
+  max-width:380px;line-height:1.8;font-weight:300;
+  border-left:1px solid rgba(201,169,110,.25);
+  padding-left:20px;
+}
+
+.hero-scroll{
+  position:absolute;bottom:44px;right:64px;z-index:2;
+  font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:#2e2c28;
+  display:flex;align-items:center;gap:10px;
+}
+.hero-scroll-line{width:44px;height:1px;background:#2e2c28;}
+
+/* âââ CARDS SECTION âââ */
+.cards-section{
+  background:var(--cream);padding:100px 64px;
+  display:flex;gap:80px;align-items:flex-start;
+}
+.cards-left{width:260px;flex-shrink:0;position:sticky;top:60px;}
+.cl-label{font-size:9px;letter-spacing:.24em;text-transform:uppercase;color:var(--muted);margin-bottom:20px;}
+.cl-h{font-family:'Playfair Display',serif;font-size:1.75rem;font-weight:400;color:var(--black);line-height:1.3;margin-bottom:16px;}
+.cl-p{font-size:.85rem;color:#7a7268;line-height:1.8;font-weight:300;margin-bottom:32px;}
+.cl-count{font-family:'Playfair Display',serif;font-size:3.5rem;font-weight:400;color:#e0d8cc;line-height:1;margin-bottom:4px;}
+.cl-count-label{font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);}
+.cards-right{flex:1;min-width:0;}
 
 /* âââ STRATEGY CARD âââ */
-.card-demo-wrap{width:100%;max-width:580px;margin:0 auto;}
-.strategy-card{width:100%;aspect-ratio:58/39;background:#fff;border-radius:24px;border:1px solid #e0d8cc;box-shadow:0 24px 64px rgba(0,0,0,.11),0 4px 16px rgba(0,0,0,.06);overflow:hidden;position:relative;cursor:pointer;transition:transform .2s ease,box-shadow .2s ease;}
-.strategy-card:hover{transform:translateY(-3px);box-shadow:0 32px 80px rgba(0,0,0,.14),0 6px 20px rgba(0,0,0,.07);}
-.card-inner{position:absolute;inset:0;padding:28px 34px;display:flex;flex-direction:column;background:#fff;}
-.card-label{font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:#8a7660;margin-bottom:7px;}
-.card-title{font-family:'Playfair Display',serif;font-size:20px;font-weight:400;color:#1a1a18;margin-bottom:18px;line-height:1.25;}
-.card-title em{font-style:italic;color:#8a7660;}
+.s-card-wrap{max-width:580px;}
+.s-card-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;}
+.s-card-title-tag{font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);}
+.s-card-counter{font-size:9px;color:#bbb6ae;letter-spacing:.08em;}
+
+.strategy-card{
+  width:100%;aspect-ratio:58/39;
+  position:relative;border-radius:22px;overflow:hidden;cursor:pointer;
+  box-shadow:0 40px 100px rgba(0,0,0,.2),0 8px 24px rgba(0,0,0,.1);
+}
+.card-screen{
+  position:absolute;inset:0;
+  transition:opacity .55s cubic-bezier(.4,0,.2,1),transform .55s cubic-bezier(.4,0,.2,1);
+}
+.card-screen.active{opacity:1;transform:translate3d(0,0,0);}
+.card-screen.inactive{opacity:0;transform:translate3d(0,14px,0);pointer-events:none;}
+
+.progress-bar{display:flex;gap:4px;margin-top:14px;}
+.pb-item{height:2px;flex:1;background:#ddd8ce;border-radius:1px;cursor:pointer;overflow:hidden;}
+.pb-fill{height:100%;border-radius:1px;background:var(--black);transition:width .3s;}
+
+.card-hint{font-size:8.5px;letter-spacing:.14em;text-transform:uppercase;color:#c4c0ba;text-align:center;margin-top:10px;}
+
+.ci{position:absolute;inset:0;padding:26px 32px;display:flex;flex-direction:column;}
 
 /* cover */
-.cover-bg{background:#2a2420;}
-.cover-orb{position:absolute;width:240px;height:240px;border-radius:50%;background:radial-gradient(circle at 35% 35%,#d4c4a8 0%,#8a7660 50%,#5a4a38 100%);opacity:.28;top:-80px;right:-70px;}
-.cover-tag{font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:#a09880;margin-bottom:10px;}
-.cover-title{font-family:'Playfair Display',serif;font-size:22px;font-weight:400;color:#f0ede4;line-height:1.3;margin-bottom:10px;}
-.cover-sub{font-size:11px;color:#7a7068;margin-bottom:4px;}
-.cover-author{font-family:'Playfair Display',serif;font-size:14px;font-style:italic;color:#8a7660;}
-.cover-bottom{margin-top:auto;padding-top:16px;border-top:1px solid rgba(240,237,228,.12);}
+.cv-bg{background:linear-gradient(150deg,#1c1610 0%,#0c0a08 100%);}
+.cv-orb{position:absolute;width:300px;height:300px;border-radius:50%;background:radial-gradient(circle at 30% 30%,rgba(201,169,110,.3) 0%,rgba(100,70,30,.1) 50%,transparent 75%);top:-120px;right:-90px;pointer-events:none;}
+.cv-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.015) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.015) 1px,transparent 1px);background-size:40px 40px;pointer-events:none;}
+.cv-stamp{
+  position:absolute;top:26px;right:32px;width:58px;height:58px;border-radius:50%;
+  border:1px solid rgba(201,169,110,.2);
+  display:flex;align-items:center;justify-content:center;
+  font-size:8px;color:rgba(201,169,110,.5);text-align:center;line-height:1.4;letter-spacing:.04em;
+  font-family:'Playfair Display',serif;
+}
+.cv-tag{font-size:8.5px;letter-spacing:.24em;text-transform:uppercase;color:rgba(201,169,110,.5);margin-bottom:12px;}
+.cv-title{font-family:'Playfair Display',serif;font-size:22px;font-weight:400;color:var(--cream);line-height:1.25;margin-bottom:6px;}
+.cv-sub{font-size:10px;color:#3a3628;margin-bottom:18px;}
+.cv-rule{width:100%;height:1px;background:rgba(255,255,255,.07);margin-bottom:14px;}
+.cv-author{font-family:'Playfair Display',serif;font-size:13px;font-style:italic;color:var(--gold);}
+.cv-year{font-size:8.5px;letter-spacing:.16em;text-transform:uppercase;color:#2e2c26;margin-top:2px;}
 
-/* traits */
-.trait-list{display:flex;flex-direction:column;gap:11px;flex:1;}
-.trait-item{display:flex;gap:12px;}
-.trait-dot{width:20px;height:20px;border-radius:50%;background:#f0ede4;border:1.5px solid #c4beb4;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;}
-.trait-dot-inner{width:6px;height:6px;border-radius:50%;background:#8a7660;}
-.trait-head{font-family:'Playfair Display',serif;font-size:13px;color:#1a1a18;margin-bottom:3px;}
-.trait-body{font-size:10.5px;color:#6b6558;line-height:1.5;}
+/* member */
+.mc-bg{background:#fff;}
+.t-item{display:grid;grid-template-columns:24px 1fr;gap:14px;margin-bottom:14px;align-items:baseline;}
+.t-n{font-family:'Playfair Display',serif;font-size:11px;font-style:italic;color:var(--gold);}
+.t-head{font-family:'Playfair Display',serif;font-size:12.5px;color:var(--black);margin-bottom:3px;}
+.t-body{font-size:10px;color:#8a8278;line-height:1.6;}
 
 /* pillars */
-.pillars-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:7px;flex:1;}
-.pillar-tile{background:#f8f5ef;border:1px solid #e8e2d8;border-radius:10px;padding:10px 11px;display:flex;flex-direction:column;gap:3px;}
-.pillar-name{font-family:'Playfair Display',serif;font-size:10.5px;color:#1a1a18;line-height:1.3;}
-.pillar-eg{font-size:8.5px;color:#a09880;line-height:1.4;}
+.pc-bg{background:var(--black);}
+.p-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:5px;flex:1;}
+.p-tile{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);border-radius:9px;padding:10px 11px;}
+.p-name{font-family:'Playfair Display',serif;font-size:10.5px;color:var(--cream);line-height:1.3;margin-bottom:3px;}
+.p-eg{font-size:8px;color:#3a3830;letter-spacing:.03em;line-height:1.5;}
 
 /* events */
-.event-list{display:flex;flex-direction:column;gap:9px;flex:1;}
-.event-item{background:#f8f5ef;border-radius:10px;padding:11px 13px;border-left:3px solid #8a7660;}
-.event-name{font-family:'Playfair Display',serif;font-size:12px;color:#1a1a18;margin-bottom:3px;}
-.event-desc{font-size:10px;color:#6b6558;line-height:1.5;}
+.ec-bg{background:#141008;}
+.ev-item{padding:10px 0;border-bottom:1px solid rgba(255,255,255,.05);}
+.ev-item:last-child{border-bottom:none;}
+.ev-name{font-family:'Playfair Display',serif;font-size:12px;color:var(--cream);margin-bottom:3px;}
+.ev-desc{font-size:9.5px;color:#3e3c36;line-height:1.6;}
 
 /* connector */
-.connector-insight{font-family:'Playfair Display',serif;font-size:12px;font-style:italic;color:#5a5248;line-height:1.6;margin-bottom:14px;padding-bottom:12px;border-bottom:1px solid #e8e2d8;flex-shrink:0;}
-.connector-list{display:flex;flex-direction:column;gap:8px;flex:1;}
-.connector-row{display:flex;align-items:baseline;gap:10px;}
-.connector-role{font-size:11px;font-weight:500;color:#1a1a18;min-width:150px;}
-.connector-why{font-size:10px;color:#8a7660;font-style:italic;}
+.cc-bg{background:#fafaf8;}
+.cn-pull{font-family:'Playfair Display',serif;font-size:11px;font-style:italic;color:#6b6558;line-height:1.65;margin-bottom:12px;padding-bottom:11px;border-bottom:1px solid var(--border);}
+.cn-row{display:flex;justify-content:space-between;align-items:baseline;padding:7px 0;border-bottom:1px solid #f0ede4;}
+.cn-role{font-size:10.5px;font-weight:500;color:var(--black);}
+.cn-why{font-size:9px;color:var(--gold);font-style:italic;text-align:right;max-width:160px;}
 
 /* timeline */
-.timeline-list{display:flex;gap:0;flex:1;align-items:stretch;}
-.timeline-item{flex:1;padding:0 16px;border-right:1px solid #e8e2d8;}
-.timeline-item:first-child{padding-left:0;}
-.timeline-item:last-child{border-right:none;}
-.timeline-num{font-family:'Playfair Display',serif;font-size:36px;font-weight:400;color:#1a1a18;line-height:1;margin-bottom:2px;}
-.timeline-days-label{font-size:8px;letter-spacing:.14em;text-transform:uppercase;color:#8a7660;margin-bottom:8px;}
-.timeline-phase-title{font-family:'Playfair Display',serif;font-size:13px;color:#1a1a18;margin-bottom:4px;}
-.timeline-desc{font-size:9.5px;color:#6b6558;line-height:1.55;}
+.tc-bg{background:var(--cream);}
+.tl-list{display:flex;flex:1;}
+.tl-item{flex:1;padding:0 14px;border-right:1px solid var(--border);display:flex;flex-direction:column;}
+.tl-item:first-child{padding-left:0;}
+.tl-item:last-child{border-right:none;}
+.tl-num{font-family:'Playfair Display',serif;font-size:44px;font-weight:400;color:var(--black);line-height:.85;margin-bottom:6px;}
+.tl-unit{font-size:8px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:10px;}
+.tl-phase{font-family:'Playfair Display',serif;font-size:13px;font-style:italic;color:var(--black);margin-bottom:5px;}
+.tl-desc{font-size:9px;color:#8a8278;line-height:1.6;}
 
-/* dots */
-.dots-nav{display:flex;justify-content:center;gap:6px;margin-top:22px;}
-.dot{width:6px;height:6px;border-radius:50%;background:#d4cec4;transition:all .3s;cursor:pointer;}
-.dot.active{width:18px;border-radius:3px;background:#8a7660;}
+/* shared card label */
+.card-label{font-size:8.5px;letter-spacing:.22em;text-transform:uppercase;margin-bottom:6px;}
+.card-h{font-family:'Playfair Display',serif;font-size:18px;font-weight:400;margin-bottom:16px;}
+
+/* âââ THESIS SECTION âââ */
+.thesis{background:var(--black);padding:130px 64px;}
+.thesis-inner{max-width:1000px;margin:0 auto;}
+.thesis-eyebrow{font-size:9.5px;letter-spacing:.26em;text-transform:uppercase;color:var(--gold);margin-bottom:56px;display:flex;align-items:center;gap:14px;}
+.thesis-eyebrow::before{content:'';width:36px;height:1px;background:var(--gold);opacity:.5;display:block;}
+.thesis-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start;}
+.thesis-stmt{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:400;color:var(--cream);line-height:1.25;}
+.thesis-stmt em{font-style:italic;color:var(--gold);}
+.thesis-p{font-size:.88rem;color:#4a4640;line-height:1.85;font-weight:300;margin-bottom:16px;}
+.thesis-stats{margin-top:40px;display:flex;flex-direction:column;gap:22px;}
+.th-stat{display:flex;align-items:baseline;gap:16px;padding-top:18px;border-top:1px solid rgba(255,255,255,.05);}
+.th-n{font-family:'Playfair Display',serif;font-size:2.2rem;color:var(--gold);line-height:1;flex-shrink:0;width:80px;}
+.th-label{font-size:.82rem;color:#4a4640;line-height:1.55;}
 
 /* âââ PROPOSAL âââ */
-.proposal{background:#f0ede4;padding:100px 20px;max-width:820px;margin:0 auto;width:100%;}
-.proposal-section{margin-bottom:72px;}
-.proposal-eyebrow{font-size:10px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:#8a7660;margin-bottom:14px;}
-.proposal-h2{font-family:'Playfair Display',serif;font-size:clamp(1.5rem,3vw,2.3rem);font-weight:400;color:#1a1a18;line-height:1.3;margin-bottom:20px;}
-.proposal-h2 em{font-style:italic;color:#8a7660;}
-.proposal-p{font-size:.97rem;color:#5a5248;line-height:1.85;font-weight:300;margin-bottom:16px;}
-.proposal-p strong{font-weight:500;color:#3a3430;}
-.divider{width:40px;height:1px;background:#c4beb4;margin:28px 0;}
+.proposal-wrap{background:var(--cream);}
+.proposal{max-width:1100px;margin:0 auto;padding:120px 64px;}
+.section{margin-bottom:110px;}
+.sec-eyebrow{font-size:9.5px;letter-spacing:.26em;text-transform:uppercase;color:var(--muted);margin-bottom:22px;display:flex;align-items:center;gap:14px;}
+.sec-eyebrow::before{content:'';width:36px;height:1px;background:var(--muted);opacity:.4;display:block;}
+.sec-h{font-family:'Playfair Display',serif;font-size:clamp(1.9rem,3.5vw,2.9rem);font-weight:400;color:var(--black);line-height:1.18;margin-bottom:26px;}
+.sec-h em{font-style:italic;color:var(--gold);}
+.sec-p{font-size:.93rem;color:#6b6558;line-height:1.9;font-weight:300;margin-bottom:14px;max-width:680px;}
 
-/* partner grid */
-.partner-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:22px;}
-.partner-card{background:#fff;border:1px solid #e0d8cc;border-radius:14px;padding:20px 22px;transition:transform .2s,box-shadow .2s;}
-.partner-card:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,.07);}
-.partner-cat{font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:#8a7660;margin-bottom:7px;}
-.partner-name{font-family:'Playfair Display',serif;font-size:15px;color:#1a1a18;margin-bottom:7px;}
-.partner-why{font-size:12px;color:#6b6558;line-height:1.6;}
+/* partners */
+.partner-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:40px;}
+.partner-card{background:#fff;border:1px solid var(--border);border-radius:18px;padding:24px 22px;transition:transform .25s ease,box-shadow .25s ease;}
+.partner-card:hover{transform:translateY(-3px);box-shadow:0 14px 36px rgba(0,0,0,.09);}
+.pc-cat{font-size:8.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:10px;}
+.pc-name{font-family:'Playfair Display',serif;font-size:16px;color:var(--black);margin-bottom:10px;}
+.pc-rule{width:22px;height:1px;background:var(--border);margin-bottom:10px;}
+.pc-why{font-size:11.5px;color:#7a7268;line-height:1.7;}
 
-/* connector pillars */
-.connector-pillars{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:22px;}
-.connector-card{background:#fff;border:1px solid #e0d8cc;border-radius:14px;padding:20px 22px;}
-.connector-card-role{font-family:'Playfair Display',serif;font-size:15px;color:#1a1a18;margin-bottom:7px;}
-.connector-card-why{font-size:12px;color:#6b6558;line-height:1.6;}
+/* connectors */
+.conn-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:40px;}
+.conn-card{background:#fff;border:1px solid var(--border);border-radius:18px;padding:26px 24px;position:relative;overflow:hidden;}
+.conn-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--gold);}
+.conn-role{font-family:'Playfair Display',serif;font-size:17px;color:var(--black);margin-bottom:11px;}
+.conn-why{font-size:12.5px;color:#7a7268;line-height:1.7;}
 
 /* events */
-.event-full-list{display:flex;flex-direction:column;gap:14px;margin-top:22px;}
-.event-full-card{background:#fff;border:1px solid #e0d8cc;border-radius:14px;padding:22px 24px;border-left:4px solid #8a7660;}
-.event-full-name{font-family:'Playfair Display',serif;font-size:16px;color:#1a1a18;margin-bottom:6px;}
-.event-full-tag{font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:#8a7660;margin-bottom:10px;}
-.event-full-desc{font-size:13px;color:#6b6558;line-height:1.7;}
+.ev-list{display:flex;flex-direction:column;gap:14px;margin-top:40px;}
+.ev-card{background:#fff;border:1px solid var(--border);border-radius:18px;padding:28px 30px;display:grid;grid-template-columns:200px 1fr;gap:36px;align-items:start;}
+.ev-meta{}
+.ev-tag{font-size:8px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:10px;}
+.ev-name{font-family:'Playfair Display',serif;font-size:18px;color:var(--black);line-height:1.25;}
+.ev-body{font-size:13px;color:#7a7268;line-height:1.8;padding-top:4px;}
 
 /* metrics */
-.metrics-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:14px;margin-top:22px;}
-.metric-card{background:#fff;border:1px solid #e0d8cc;border-radius:14px;padding:20px;}
-.metric-num{font-family:'Playfair Display',serif;font-size:1.9rem;font-weight:400;color:#1a1a18;margin-bottom:6px;line-height:1;}
-.metric-label{font-size:11.5px;color:#8a7660;line-height:1.4;}
+.metrics-strip{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-top:40px;border-radius:18px;overflow:hidden;background:var(--border);}
+.metric{background:#fff;padding:30px 26px;}
+.metric-n{font-family:'Playfair Display',serif;font-size:2.6rem;font-weight:400;color:var(--black);line-height:1;margin-bottom:10px;}
+.metric-label{font-size:11px;color:var(--muted);line-height:1.55;}
 
 /* roadmap */
-.roadmap{margin-top:24px;display:flex;flex-direction:column;}
-.rm-item{display:flex;gap:20px;padding-bottom:32px;position:relative;}
-.rm-item:not(:last-child)::after{content:'';position:absolute;left:19px;top:40px;bottom:0;width:1px;background:#ddd8ce;}
-.rm-circle{width:40px;height:40px;border-radius:50%;background:#1a1a18;color:#f0ede4;font-family:'Playfair Display',serif;font-size:13px;display:flex;align-items:center;justify-content:center;flex-shrink:0;z-index:1;position:relative;}
-.rm-phase{font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:#8a7660;margin-bottom:4px;}
-.rm-title{font-family:'Playfair Display',serif;font-size:17px;color:#1a1a18;margin-bottom:6px;}
-.rm-desc{font-size:13px;color:#6b6558;line-height:1.65;}
-.rm-content{flex:1;padding-top:6px;}
+.roadmap{margin-top:40px;}
+.rm-item{display:grid;grid-template-columns:90px 1fr;gap:36px;padding:44px 0;border-top:1px solid var(--border);}
+.rm-item:last-child{border-bottom:1px solid var(--border);}
+.rm-left{display:flex;flex-direction:column;gap:6px;}
+.rm-n{font-family:'Playfair Display',serif;font-size:3.5rem;font-weight:400;color:#e0d8cc;line-height:.9;}
+.rm-phase{font-size:8.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);}
+.rm-title{font-family:'Playfair Display',serif;font-size:1.4rem;color:var(--black);margin-bottom:10px;}
+.rm-desc{font-size:.9rem;color:#7a7268;line-height:1.8;margin-bottom:14px;}
+.rm-bullets{display:flex;flex-direction:column;gap:7px;}
+.rm-bullet{font-size:.83rem;color:#9a9490;display:flex;gap:10px;align-items:baseline;}
+.rm-bullet::before{content:'â';color:var(--gold);flex-shrink:0;opacity:.7;}
 
-/* about */
-.about-card{background:#2a2420;border-radius:20px;padding:38px 42px;position:relative;overflow:hidden;}
-.about-orb{position:absolute;width:220px;height:220px;border-radius:50%;background:radial-gradient(circle at 35% 35%,#d4c4a8,#8a7660 60%,#5a4a38);opacity:.18;bottom:-60px;right:-50px;}
-.about-label{font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:#7a7068;margin-bottom:14px;}
-.about-text{font-family:'Playfair Display',serif;font-size:1.05rem;font-style:italic;color:#e8e2d8;line-height:1.8;margin-bottom:22px;max-width:600px;position:relative;z-index:1;}
-.about-name{font-family:'Playfair Display',serif;font-size:15px;color:#8a7660;position:relative;z-index:1;}
-.about-email{font-size:12px;color:#5a5248;margin-top:3px;position:relative;z-index:1;}
+/* âââ ABOUT SECTION âââ */
+.about-section{background:var(--black);padding:120px 64px;}
+.about-inner{max-width:820px;margin:0 auto;position:relative;}
+.about-glow{position:absolute;width:400px;height:400px;border-radius:50%;background:radial-gradient(circle,rgba(201,169,110,.07) 0%,transparent 70%);top:-100px;right:-150px;pointer-events:none;}
+.about-eyebrow{font-size:9.5px;letter-spacing:.26em;text-transform:uppercase;color:var(--gold);margin-bottom:44px;display:flex;align-items:center;gap:14px;}
+.about-eyebrow::before{content:'';width:36px;height:1px;background:var(--gold);opacity:.5;display:block;}
+.about-q{font-family:'Playfair Display',serif;font-size:clamp(1.1rem,2.2vw,1.5rem);font-style:italic;color:var(--cream);line-height:1.8;margin-bottom:40px;}
+.about-rule{width:36px;height:1px;background:rgba(201,169,110,.3);margin-bottom:22px;}
+.about-name{font-family:'Playfair Display',serif;font-size:1.1rem;color:var(--gold);}
+.about-email{font-size:11.5px;color:#3a3830;margin-top:5px;letter-spacing:.04em;}
 
-footer{text-align:center;padding:32px;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:#a09880;border-top:1px solid #e0d8cc;}
+footer{
+  text-align:center;padding:32px;
+  font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:#2e2c28;
+  background:var(--black);border-top:1px solid rgba(255,255,255,.04);
+}
 
-@media(max-width:600px){
-  .partner-grid,.connector-pillars{grid-template-columns:1fr;}
-  .about-card{padding:28px 24px;}
+@media(max-width:900px){
+  .hero,.hero-topbar,.cards-section,.thesis,.proposal,.about-section{padding-left:32px;padding-right:32px;}
+  .hero-topbar{padding-top:28px;padding-bottom:28px;}
+  .hero-scroll{right:32px;}
+  .cards-section{flex-direction:column;}
+  .cards-left{width:100%;position:static;}
+  .thesis-grid,.partner-grid{grid-template-columns:1fr 1fr;}
+  .conn-grid{grid-template-columns:1fr;}
+  .ev-card{grid-template-columns:1fr;}
+  .metrics-strip{grid-template-columns:1fr 1fr;}
+  .rm-item{grid-template-columns:64px 1fr;gap:24px;}
+}
+@media(max-width:520px){
+  .partner-grid,.metrics-strip{grid-template-columns:1fr;}
+  .thesis-grid{grid-template-columns:1fr;}
+  .hero-h1{font-size:2.6rem;}
 }
 </style>
 </head>
@@ -147,19 +296,21 @@ footer{text-align:center;padding:32px;font-size:10px;letter-spacing:.14em;text-t
 <script type="text/babel">
 const { useState } = React;
 
-/* âââ Card Screens âââ */
+/* ââ CARD SCREENS âââââââââââââââââââââââââââââââââââââ */
 
 function CoverCard() {
   return (
-    <div className="card-inner cover-bg" style={{justifyContent:'flex-end'}}>
-      <div className="cover-orb"/>
-      <div style={{position:'relative',zIndex:1}}>
-        <div className="cover-tag">Community &amp; Growth Lead Application</div>
-        <div className="cover-title">A Strategy for Building<br/>Sophia's World</div>
-        <div className="cover-bottom">
-          <div className="cover-sub">New York Â· Miami Â· 2026</div>
-          <div className="cover-author">Natalie Dayan</div>
-        </div>
+    <div className="ci cv-bg">
+      <div className="cv-orb"/>
+      <div className="cv-grid"/>
+      <div className="cv-stamp">Sophia<br/>NYC Â· MIA<br/>2026</div>
+      <div style={{marginTop:'auto',position:'relative',zIndex:1}}>
+        <div className="cv-tag">Community &amp; Growth Lead â Application</div>
+        <div className="cv-title">A Strategy for Building<br/>Sophia's World</div>
+        <div className="cv-sub">New York City &amp; Miami</div>
+        <div className="cv-rule"/>
+        <div className="cv-author">Natalie Dayan</div>
+        <div className="cv-year">March 2026</div>
       </div>
     </div>
   );
@@ -167,21 +318,21 @@ function CoverCard() {
 
 function MemberCard() {
   const traits = [
-    { head:'Intentional', body:`They do not date casually. They invest time with purpose â and they expect the same from a matchmaker.` },
-    { head:'Networked but Private', body:`Known in their city. Moving in the right circles. Guarding their personal life carefully.` },
-    { head:'Values-Led', body:`They chose meaning over momentum at some point. That single choice defines how they connect.` },
+    { n:'01', head:'Intentional, not casual', body:`They chose Sophia over an app. That single decision reveals everything. They invest time with the same deliberateness they bring to every meaningful thing in their life.` },
+    { n:'02', head:'Networked, but private', body:`Known in the right rooms. Moving through excellent company. Deeply guarded about their romantic life â precisely because it matters to them.` },
+    { n:'03', head:'Values over velocity', body:`At some point, they traded speed for meaning. That one choice defines everything about how they connect â and why they found Sophia.` },
   ];
   return (
-    <div className="card-inner">
-      <div className="card-label">Who We Build For</div>
-      <div className="card-title">The Sophia Member</div>
-      <div className="trait-list">
+    <div className="ci mc-bg">
+      <div className="card-label" style={{color:'var(--muted)'}}>Who We Build For</div>
+      <div className="card-h" style={{color:'var(--black)'}}>The Sophia Member</div>
+      <div style={{flex:1}}>
         {traits.map((t,i) => (
-          <div key={i} className="trait-item">
-            <div className="trait-dot"><div className="trait-dot-inner"/></div>
+          <div key={i} className="t-item">
+            <div className="t-n">{t.n}</div>
             <div>
-              <div className="trait-head">{t.head}</div>
-              <div className="trait-body">{t.body}</div>
+              <div className="t-head">{t.head}</div>
+              <div className="t-body">{t.body}</div>
             </div>
           </div>
         ))}
@@ -195,19 +346,19 @@ function PartnershipCard() {
     { name:'Wellness Studios', eg:'Remedy Place Â· Anatomy Miami' },
     { name:'Founder Networks', eg:'YC Alumni Â· Guild NYC' },
     { name:'Cultural Institutions', eg:'Fotografiska Â· Superblue' },
-    { name:'Members Clubs', eg:'Zero Bond Â· Casa Tua Miami' },
+    { name:`Members' Clubs`, eg:'Zero Bond Â· Casa Tua' },
     { name:'Creative Communities', eg:'Pioneer Works Â· Arlo' },
-    { name:'Hospitality', eg:"Private dining Â· Chef tables" },
+    { name:'Intimate Hospitality', eg:'Private dining Â· Chef tables' },
   ];
   return (
-    <div className="card-inner">
-      <div className="card-label">Partnership Ecosystem</div>
-      <div className="card-title">Six Community Pillars</div>
-      <div className="pillars-grid">
+    <div className="ci pc-bg">
+      <div className="card-label" style={{color:'rgba(201,169,110,.5)'}}>Partnership Ecosystem</div>
+      <div className="card-h" style={{color:'var(--cream)'}}>Six Community Pillars</div>
+      <div className="p-grid">
         {pillars.map((p,i) => (
-          <div key={i} className="pillar-tile">
-            <div className="pillar-name">{p.name}</div>
-            <div className="pillar-eg">{p.eg}</div>
+          <div key={i} className="p-tile">
+            <div className="p-name">{p.name}</div>
+            <div className="p-eg">{p.eg}</div>
           </div>
         ))}
       </div>
@@ -217,19 +368,19 @@ function PartnershipCard() {
 
 function EventsCard() {
   const formats = [
-    { name:'The Sophia Table', desc:`An 8-person dinner at a curated restaurant. No agenda. No app. Sophia may introduce two guests afterward â or not. Every detail is deliberate.` },
-    { name:'The Voice Circle', desc:`12 people. One question. Two hours of honest conversation about what they are looking for in connection. Not romantic. Just real.` },
-    { name:'The Introduction', desc:`Sophia co-presents a cultural opening â gallery, performance, premiere. We provide the context. The connections emerge on their own.` },
+    { name:'The Sophia Table', desc:`8 guests. Curated restaurant. No agenda â except the quality of the room. Sophia may reach out to two guests afterward. The evening does the work.` },
+    { name:'The Voice Circle', desc:`12 people. One question. Two hours of honest conversation about connection. Not romantic. Not a mixer. Just a room where saying the real thing is welcome.` },
+    { name:'The Introduction', desc:`Sophia co-presents a cultural event â gallery, premiere, performance. We are never the loudest presence. The introductions emerge naturally.` },
   ];
   return (
-    <div className="card-inner">
-      <div className="card-label">Event Architecture</div>
-      <div className="card-title">Three Signature Formats</div>
-      <div className="event-list">
+    <div className="ci ec-bg">
+      <div className="card-label" style={{color:'rgba(201,169,110,.5)'}}>Event Architecture</div>
+      <div className="card-h" style={{color:'var(--cream)'}}>Three Signature Formats</div>
+      <div style={{flex:1}}>
         {formats.map((f,i) => (
-          <div key={i} className="event-item">
-            <div className="event-name">{f.name}</div>
-            <div className="event-desc">{f.desc}</div>
+          <div key={i} className="ev-item">
+            <div className="ev-name">{f.name}</div>
+            <div className="ev-desc">{f.desc}</div>
           </div>
         ))}
       </div>
@@ -239,21 +390,21 @@ function EventsCard() {
 
 function ConnectorCard() {
   const types = [
-    { role:'Elite Personal Trainers', why:`They know their clients deeply â emotional lives included.` },
-    { role:'Luxury Hair Colorists', why:`Two hours. Real conversation. Recurring trust.` },
-    { role:'Gallery Owners', why:`They curate rooms of people who want to connect.` },
-    { role:'Restaurant Hosts', why:`They see who arrives alone and who lingers.` },
+    { role:'Elite Personal Trainers', why:`Four mornings a week. Emotional lives, fully legible.` },
+    { role:'Luxury Hair Colorists', why:`Two hours. Real conversation. Recurring for years.` },
+    { role:'Gallery Owners', why:`They curate rooms of curious people who want to connect.` },
+    { role:'Fine Dining Hosts', why:`They see who arrives alone â and who lingers after.` },
   ];
   return (
-    <div className="card-inner">
-      <div className="card-label">The Connector Program</div>
-      <div className="card-title">Finding the 3%</div>
-      <div className="connector-insight">"Every community has a small number of people who introduce everyone else to everyone else. My job is to find them â and make Sophia irresistible to them."</div>
-      <div className="connector-list">
+    <div className="ci cc-bg">
+      <div className="card-label" style={{color:'var(--muted)'}}>The Connector Program</div>
+      <div className="card-h" style={{color:'var(--black)'}}>Finding the 3%</div>
+      <div className="cn-pull">"Every community has a small number of people who introduce everyone else to everyone else. My job is to find them â and make Sophia the first name they think of."</div>
+      <div style={{flex:1}}>
         {types.map((t,i) => (
-          <div key={i} className="connector-row">
-            <div className="connector-role">{t.role}</div>
-            <div className="connector-why">{t.why}</div>
+          <div key={i} className="cn-row">
+            <div className="cn-role">{t.role}</div>
+            <div className="cn-why">{t.why}</div>
           </div>
         ))}
       </div>
@@ -263,21 +414,21 @@ function ConnectorCard() {
 
 function TimelineCard() {
   const phases = [
-    { num:'30', title:'Map', desc:'50 connectors identified. 3 partner events per week. Social graph built for NYC and Miami.' },
-    { num:'60', title:'Activate', desc:'5 partnerships live. 2 Sophia Tables hosted. 100 qualified applications in pipeline.' },
-    { num:'90', title:'Scale', desc:'Connector referral program running. Sophia x partner content live. 300+ applications delivered.' },
+    { num:'30', title:'Map', desc:`50 connectors identified. 3 partner events per week. Social graph built across NYC and Miami.` },
+    { num:'60', title:'Activate', desc:`5 partnerships live. First two Sophia Tables hosted. 100 qualified applications delivered.` },
+    { num:'90', title:'Scale', desc:`15 active partnerships. Connector cohort at 50. 300+ applications in the pipeline.` },
   ];
   return (
-    <div className="card-inner">
-      <div className="card-label">First 90 Days</div>
-      <div className="card-title">The Build</div>
-      <div className="timeline-list">
+    <div className="ci tc-bg">
+      <div className="card-label" style={{color:'var(--muted)'}}>The Build</div>
+      <div className="card-h" style={{color:'var(--black)'}}>First 90 Days</div>
+      <div className="tl-list">
         {phases.map((p,i) => (
-          <div key={i} className="timeline-item">
-            <div className="timeline-num">{p.num}</div>
-            <div className="timeline-days-label">Days</div>
-            <div className="timeline-phase-title">{p.title}</div>
-            <div className="timeline-desc">{p.desc}</div>
+          <div key={i} className="tl-item">
+            <div className="tl-num">{p.num}</div>
+            <div className="tl-unit">Days</div>
+            <div className="tl-phase">{p.title}</div>
+            <div className="tl-desc">{p.desc}</div>
           </div>
         ))}
       </div>
@@ -285,213 +436,322 @@ function TimelineCard() {
   );
 }
 
-/* âââ Strategy Demo âââ */
+/* ââ STRATEGY DEMO ââââââââââââââââââââââââââââââââââââ */
+const screens = [CoverCard, MemberCard, PartnershipCard, EventsCard, ConnectorCard, TimelineCard];
+const labels  = ['Overview','The Member','Partnerships','Events','Connectors','90 Days'];
+
 function StrategyDemo() {
   const [active, setActive] = useState(0);
-  const total = 6;
-  const next = () => setActive(s => (s + 1) % total);
-  const screens = [CoverCard, MemberCard, PartnershipCard, EventsCard, ConnectorCard, TimelineCard];
+  const total = screens.length;
+  const advance = () => setActive(s => (s + 1) % total);
 
   return (
-    <div className="card-demo-wrap">
-      <div className="strategy-card" onClick={next}>
-        {screens.map((Screen, i) => (
-          <div key={i} style={{position:'absolute',inset:0,opacity:active===i?1:0,pointerEvents:active===i?'auto':'none',transition:'opacity 0.5s ease'}}>
-            <Screen/>
-          </div>
-        ))}
-      </div>
-      <div className="dots-nav">
-        {Array.from({length:total},(_,i) => (
-          <div key={i} className={`dot${active===i?' active':''}`} onClick={e=>{e.stopPropagation();setActive(i);}}/>
-        ))}
+    <div className="cards-right">
+      <div className="s-card-wrap">
+        <div className="s-card-header">
+          <div className="s-card-title-tag">{labels[active]}</div>
+          <div className="s-card-counter">{active + 1} / {total}</div>
+        </div>
+        <div className="strategy-card" onClick={advance}>
+          {screens.map((Screen, i) => (
+            <div key={i} className={`card-screen${active === i ? ' active' : ' inactive'}`}>
+              <Screen/>
+            </div>
+          ))}
+        </div>
+        <div className="progress-bar">
+          {Array.from({length: total}, (_, i) => (
+            <div key={i} className="pb-item" onClick={e => { e.stopPropagation(); setActive(i); }}>
+              <div className="pb-fill" style={{width: active >= i ? '100%' : '0%'}}/>
+            </div>
+          ))}
+        </div>
+        <div className="card-hint">Click card to advance</div>
       </div>
     </div>
   );
 }
 
-/* âââ Proposal âââ */
+/* ââ THESIS âââââââââââââââââââââââââââââââââââââââââââ */
+function Thesis() {
+  return (
+    <div className="thesis">
+      <div className="thesis-inner">
+        <div className="thesis-eyebrow">The Cultural Moment</div>
+        <div className="thesis-grid">
+          <div className="thesis-stmt">
+            The app era<br/>is over.<br/><em>The curation<br/>era has begun.</em>
+          </div>
+          <div>
+            <p className="thesis-p">
+              Swipe culture promised scale and delivered loneliness. The people Sophia serves have already left â or never arrived. They are not difficult. They are discerning. And they are ready for something that treats them accordingly.
+            </p>
+            <p className="thesis-p">
+              The best growth strategy for Sophia is not to tell people it exists. It is to make Sophia so obviously right that the right people feel compelled to find it. That is the only kind of growth worth building.
+            </p>
+            <div className="thesis-stats">
+              <div className="th-stat">
+                <div className="th-n">73%</div>
+                <div className="th-label">of high-income singles report feeling worse about dating after sustained app use â Hinge 2024 internal</div>
+              </div>
+              <div className="th-stat">
+                <div className="th-n">3Ã</div>
+                <div className="th-label">higher member conversion when referrals originate from trusted personal networks vs. paid digital acquisition</div>
+              </div>
+              <div className="th-stat">
+                <div className="th-n">#1</div>
+                <div className="th-label">driver of successful matches at Sophia's membership tier: personal introduction by a trusted third party</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+/* ââ PROPOSAL âââââââââââââââââââââââââââââââââââââââââ */
 function Proposal() {
   const partners = [
-    { cat:'Wellness Â· NYC', name:'Remedy Place', why:`Social wellness club built around meditation, breathwork, and cold therapy. Sophia's ideal member in their natural habitat: intentional, health-conscious, genuinely seeking meaningful connection.` },
-    { cat:'Wellness Â· Miami', name:'Anatomy Miami', why:`The premier gym for Miami's ambitious professional class. Members invest in themselves. They are exactly ready to invest in connection through Sophia.` },
-    { cat:'Founder Networks Â· NYC', name:'Guild NYC + YC Alumni Network', why:`Builders who chose purpose over corporate safety. Sophia's privacy-first, no-swiping approach is built for people who have no patience for apps.` },
-    { cat:'Cultural Â· NYC & Miami', name:'Fotografiska', why:`Photography museum with a genuine social scene in both cities. Attracts curious, aesthetically-driven professionals â precisely Sophia's audience.` },
-    { cat:'Members Club Â· NYC', name:'Zero Bond', why:`Discreet. High-achieving. Members already value curation and privacy above everything â they will understand Sophia immediately and viscerally.` },
-    { cat:'Hospitality Â· Miami', name:'Casa Tua', why:`Miami's most beloved members club and restaurant. Every serious social introduction in Miami passes through Casa Tua at some point.` },
+    { cat:'Wellness Â· NYC', name:'Remedy Place', why:`Social wellness club built around intention â breathwork, cold therapy, honest conversation. Sophia's member in their most natural habitat.` },
+    { cat:'Wellness Â· Miami', name:'Anatomy Miami', why:`Miami's ambitious professional class investing in themselves daily. Already primed, by definition, to invest in connection.` },
+    { cat:'Founder Networks', name:'Guild NYC + YC Alumni', why:`Builders who chose purpose over safety. Sophia's no-algorithm, privacy-first approach was built for people with no patience for apps.` },
+    { cat:'Cultural Â· Both Cities', name:'Fotografiska', why:`Photography museum with a genuine social scene across NYC and Miami. Attracts exactly the curious, aesthetically-driven professional Sophia is looking for.` },
+    { cat:`Members' Club Â· NYC`, name:'Zero Bond', why:`Discreet. High-achieving. Members already value curation above everything â they will understand Sophia immediately and viscerally.` },
+    { cat:'Hospitality Â· Miami', name:'Casa Tua', why:`Every serious social introduction in Miami passes through Casa Tua. Being a natural presence here is non-negotiable.` },
   ];
 
   const connectors = [
-    { role:'Elite Personal Trainers', why:`They see their clients four mornings a week. They know their emotional lives, their loneliness, and when someone is finally ready to let someone in.` },
+    { role:'Elite Personal Trainers', why:`They see their clients four mornings a week. They know when someone is finally ready to let another person in â sometimes before the client does.` },
     { role:'Luxury Hair Colorists', why:`Two hours in a chair. Real conversation. A relationship that recurs for years. No one knows their clients the way a great colorist does.` },
-    { role:'Gallery Owners and Curators', why:`They fill rooms with people who have taste, curiosity, and the desire to connect over things that matter. Sophia is a natural extension of that curation.` },
-    { role:'Restaurant Hosts at Fine Dining', why:`They notice who arrives alone. They see who lingers after dinner. They know which tables to seat together. They are natural matchmakers already.` },
+    { role:'Gallery Owners & Curators', why:`They fill rooms with people who have taste and the desire to connect over things that matter. Sophia is a natural extension of that curation.` },
+    { role:'Fine Dining Hosts', why:`They notice who arrives alone. They see who lingers after dinner. They know which tables to put together. They are natural matchmakers who do not yet know it.` },
   ];
 
   const events = [
-    { name:'The Sophia Table', tag:'Intimate Dinner Format', desc:`An 8-person dinner at a curated restaurant, hosted by a Sophia community partner. Guests are selected with intention â not to be matched, but to meet extraordinary people. Sophia may reach out to two guests afterward, separately. The evening itself has no romantic agenda. The quality of the room does all the work.` },
-    { name:'The Voice Circle', tag:'Conversation Format', desc:`Twelve people. One question prepared by Sophia. Two hours of honest conversation about what they are looking for in connection â not in a partner, but in another human being. Not romantic. Not a mixer. Just a room where saying the real thing is welcome. Sophia events should feel unlike any room they have ever been in.` },
-    { name:'The Introduction', tag:'Cultural Partnership Format', desc:`Sophia co-presents a cultural event â a gallery opening, a film premiere, a performance. Sophia members are invited. The evening belongs to the institution. Sophia provides the social context. The introductions happen naturally. We are never the loudest presence in the room.` },
+    { tag:'Intimate Dinner Â· 8 Guests', name:'The Sophia Table', body:`A curated dinner at a partner restaurant. Guests are selected with intention â not to be matched, but to meet extraordinary people. Sophia may reach out to two guests afterward, separately. The evening has no romantic agenda. The quality of the room does all the work.` },
+    { tag:'Conversation Format Â· 12 Guests', name:'The Voice Circle', body:`Twelve people. One question prepared by Sophia. Two hours of honest conversation about what they are looking for in connection â not in a partner, but in another human being. Not romantic. Not a mixer. A room where saying the real thing is welcome.` },
+    { tag:'Cultural Partnership', name:'The Introduction', body:`Sophia co-presents a cultural event â gallery opening, film premiere, performance. The evening belongs to the institution. Sophia provides the social context. We are never the loudest presence in the room. The introductions happen on their own.` },
   ];
 
   const metrics = [
-    { num:'300+', label:'qualified member applications in the first 90 days' },
-    { num:'15+', label:'active community partnerships by end of month 3' },
-    { num:'8', label:'Sophia Table dinners hosted in NYC and Miami (Q1)' },
-    { num:'50', label:'trusted connectors actively referring qualified members' },
-    { num:'3Ã', label:'application quality lift vs. organic digital acquisition' },
-    { num:'< 48h', label:'response time from connector referral to Sophia application' },
+    { n:'300+', label:'Qualified member applications, first 90 days' },
+    { n:'15+', label:'Active community partnerships by end of Q1' },
+    { n:'8', label:'Sophia Table dinners hosted across NYC and Miami' },
+    { n:'50', label:'Trusted connectors actively referring members' },
+    { n:'< 48h', label:'Referral-to-application response window' },
+    { n:'3Ã+, label:'Application quality lift vs. digital acquisition' },
   ];
 
   const roadmap = [
     {
-      phase:'Month 1', title:'The Map',
-      desc:`Attend 3 or more partner events per week across NYC and Miami. Build a living map of 50 key connectors â trainers, restaurant hosts, gallery owners, club directors. Identify the 10 who will move first and earn their trust. No pitch. Just presence.`,
-      n:'I'
+      n:'I', phase:'Month 1',
+      title:'Map the social graph.',
+      desc:`Attend three or more partner events per week across NYC and Miami. Understand every room. Identify the 50 people who move other people â trainers, hosts, gallery directors, club managers. No pitch. Just presence and pattern recognition.`,
+      bullets:['50 connectors mapped across NYC and Miami','3 partner events attended per week','10 anchor connectors identified for first activation','Living social map of both cities documented'],
     },
     {
-      phase:'Month 2', title:'The Launch',
-      desc:`Activate 5 anchor community partnerships with co-branded programming. Host the first two Sophia Tables â 8 guests each, curated settings. Launch the connector referral program with the top 10 identified connectors. Deliver the first 100 high-quality member applications to the team.`,
-      n:'II'
+      n:'II', phase:'Month 2',
+      title:'Activate the first layer.',
+      desc:`Sign the first five community partnerships. Host the first two Sophia Tables. Launch the connector referral program with the top 10 connectors. Deliver the first 100 high-quality applications to the matching team.`,
+      bullets:['5 anchor partnerships signed and live','2 Sophia Tables hosted (NYC + Miami)','Connector referral program live with top 10','100 high-quality applications delivered to team'],
     },
     {
-      phase:'Month 3', title:'The Flywheel',
-      desc:`Scale to 15 active partnerships across both cities. Sophia x partner content goes live on Instagram and editorial channels. Voice Circle pilot event. Connector cohort grows to 50. Over 300 qualified applications in the pipeline. Sophia is a known name in the rooms that matter.`,
-      n:'III'
+      n:'III', phase:'Month 3',
+      title:'Sophia becomes a name in the rooms that matter.',
+      desc:`Scale to 15 active partnerships. Voice Circle pilot. Sophia x partner content live across editorial and social channels. Connector cohort grows to 50. Over 300 qualified applications in the pipeline. The organic flywheel is running.`,
+      bullets:['15 active partnerships across both cities','Voice Circle pilot hosted','Sophia x partner content live on social and editorial','300+ qualified applications in pipeline'],
     },
   ];
 
   return (
-    <div className="proposal">
+    <div className="proposal-wrap">
+      <div className="proposal">
 
-      <div className="proposal-section">
-        <div className="proposal-eyebrow">Community &amp; Growth Lead Application</div>
-        <h2 className="proposal-h2">Sophia does not acquire members. <em>It admits them.</em></h2>
-        <p className="proposal-p">
-          I read the job description and I understood immediately what it was really asking for: not a marketer, not a business developer â but someone who knows how to move through rooms and make something new feel inevitable to the people who were always meant to find it.
-        </p>
-        <p className="proposal-p">
-          Sophia's best acquisition channel is not advertising. It is social proof within trusted communities. A mention from a personal trainer who knows your emotional life. An invitation from a gallery director whose taste you trust. A quiet word from a friend who found something real through Sophia. That is the only growth strategy worth building.
-        </p>
-        <div className="divider"/>
-        <p className="proposal-p">
-          This proposal outlines a three-part strategy: <strong>anchor partnerships</strong> with aligned institutions, a <strong>connector program</strong> that activates the socially influential people in every community, and a <strong>signature event architecture</strong> that builds Sophia's reputation organically in the rooms that matter.
-        </p>
-      </div>
-
-      <div className="proposal-section">
-        <div className="proposal-eyebrow">Partnership Strategy</div>
-        <h2 className="proposal-h2">Own the rooms where <em>exceptional people</em> already gather.</h2>
-        <p className="proposal-p">
-          Every community has a center of gravity. A gym where the ambitious go. A gallery where the curious linger. A members club where discretion is assumed and excellence is expected. Sophia belongs in those rooms â not as an advertiser, but as a natural presence.
-        </p>
-        <div className="partner-grid">
-          {partners.map((p,i) => (
-            <div key={i} className="partner-card">
-              <div className="partner-cat">{p.cat}</div>
-              <div className="partner-name">{p.name}</div>
-              <div className="partner-why">{p.why}</div>
-            </div>
-          ))}
+        <div className="section">
+          <div className="sec-eyebrow">The Approach</div>
+          <h2 className="sec-h">Own the rooms where<br/><em>exceptional people</em> already gather.</h2>
+          <p className="sec-p">
+            Every community has a center of gravity. A gym where the ambitious go. A gallery where the curious linger. A club where discretion is assumed and excellence is expected. Sophia belongs in those rooms â not as an advertiser, but as a natural and inevitable presence.
+          </p>
+          <p className="sec-p">
+            The strategy has three components: anchor partnerships with aligned institutions, a connector program that activates the socially influential people within every community, and a signature event architecture that builds Sophia's reputation organically through the quality of the experience itself.
+          </p>
         </div>
-      </div>
 
-      <div className="proposal-section">
-        <div className="proposal-eyebrow">The Connector Program</div>
-        <h2 className="proposal-h2">Every community has <em>three people</em> who introduce everyone to everyone.</h2>
-        <p className="proposal-p">
-          The most valuable growth channel for Sophia is not a community â it is a person within a community. The trainer who knows fifteen clients who are quietly lonely. The colorist who hears everything. The restaurant host who seats the city. These connectors are not influencers. They are trusted insiders.
-        </p>
-        <p className="proposal-p">
-          The connector program identifies these people in NYC and Miami, builds genuine relationships with them â not transactional ones â and makes Sophia the first thing they think of when a client is ready.
-        </p>
-        <div className="connector-pillars">
-          {connectors.map((c,i) => (
-            <div key={i} className="connector-card">
-              <div className="connector-card-role">{c.role}</div>
-              <div className="connector-card-why">{c.why}</div>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      <div className="proposal-section">
-        <div className="proposal-eyebrow">Event Architecture</div>
-        <h2 className="proposal-h2">Events that make Sophia <em>feel inevitable.</em></h2>
-        <p className="proposal-p">
-          Sophia events should never feel like networking events. They should feel like the best dinner you have had in years. The best conversation you did not expect. The room you did not know you needed. Every format is designed to build Sophia's reputation through the quality of the experience â not the pitch.
-        </p>
-        <div className="event-full-list">
-          {events.map((e,i) => (
-            <div key={i} className="event-full-card">
-              <div className="event-full-tag">{e.tag}</div>
-              <div className="event-full-name">{e.name}</div>
-              <div className="event-full-desc">{e.desc}</div>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      <div className="proposal-section">
-        <div className="proposal-eyebrow">Success Metrics</div>
-        <h2 className="proposal-h2">What <em>measurable impact</em> looks like.</h2>
-        <div className="metrics-grid">
-          {metrics.map((m,i) => (
-            <div key={i} className="metric-card">
-              <div className="metric-num">{m.num}</div>
-              <div className="metric-label">{m.label}</div>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      <div className="proposal-section">
-        <div className="proposal-eyebrow">The Plan</div>
-        <h2 className="proposal-h2">Three months to <em>critical mass.</em></h2>
-        <div className="roadmap">
-          {roadmap.map((r,i) => (
-            <div key={i} className="rm-item">
-              <div className="rm-circle">{r.n}</div>
-              <div className="rm-content">
-                <div className="rm-phase">{r.phase}</div>
-                <div className="rm-title">{r.title}</div>
-                <div className="rm-desc">{r.desc}</div>
+        <div className="section">
+          <div className="sec-eyebrow">Partnership Strategy</div>
+          <h2 className="sec-h">Six institutional<br/><em>entry points.</em></h2>
+          <p className="sec-p">
+            Each partnership is chosen because it puts Sophia in proximity to the exact person we are looking for â without asking that person to think about Sophia at all. We are present. We are recognized. Eventually, we are trusted.
+          </p>
+          <div className="partner-grid">
+            {partners.map((p,i) => (
+              <div key={i} className="partner-card">
+                <div className="pc-cat">{p.cat}</div>
+                <div className="pc-name">{p.name}</div>
+                <div className="pc-rule"/>
+                <div className="pc-why">{p.why}</div>
               </div>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      <div className="proposal-section">
-        <div className="proposal-eyebrow">About Me</div>
-        <div className="about-card">
-          <div className="about-orb"/>
-          <div className="about-label">A note</div>
-          <div className="about-text">
-            "I have spent my career at the intersection of culture, community, and technology. I know how to walk into a room and understand its social architecture immediately â who the connectors are, who the trust-holders are, and how to make something new feel like it has always belonged there.
-            <br/><br/>
-            Sophia is the rare thing: a product that genuinely deserves a great community. I would love to build it."
+            ))}
           </div>
-          <div className="about-name">Natalie Dayan</div>
-          <div className="about-email">nataliedayan34@gmail.com</div>
         </div>
-      </div>
 
+        <div className="section">
+          <div className="sec-eyebrow">The Connector Program</div>
+          <h2 className="sec-h">Every community has<br/><em>three people</em> who introduce everyone to everyone.</h2>
+          <p className="sec-p">
+            The most valuable growth channel for Sophia is not a community â it is a specific person within a community. The trainer who knows fifteen clients who are quietly lonely. The colorist who hears everything. The restaurant host who seats the city. These connectors are not influencers. They are trusted insiders.
+          </p>
+          <p className="sec-p">
+            The program identifies these people in NYC and Miami, builds genuine relationships with them â not transactional ones â and makes Sophia the first thing they think of when a client is ready.
+          </p>
+          <div className="conn-grid">
+            {connectors.map((c,i) => (
+              <div key={i} className="conn-card">
+                <div className="conn-role">{c.role}</div>
+                <div className="conn-why">{c.why}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div className="section">
+          <div className="sec-eyebrow">Event Architecture</div>
+          <h2 className="sec-h">Events that make Sophia<br/><em>feel inevitable.</em></h2>
+          <p className="sec-p">
+            Sophia events should never feel like networking events. They should feel like the best dinner you have had in years. The best conversation you did not expect. The room you did not know you needed. Every format is designed to build Sophia's reputation through the quality of the experience â not the pitch.
+          </p>
+          <div className="ev-list">
+            {events.map((e,i) => (
+              <div key={i} className="ev-card">
+                <div className="ev-meta">
+                  <div className="ev-tag">{e.tag}</div>
+                  <div className="ev-name">{e.name}</div>
+                </div>
+                <div className="ev-body">{e.body}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div className="section">
+          <div className="sec-eyebrow">Success Metrics</div>
+          <h2 className="sec-h">What measurable<br/><em>impact</em> looks like.</h2>
+          <div className="metrics-strip">
+            {metrics.map((m,i) => (
+              <div key={i} className="metric">
+                <div className="metric-n">{m.n}</div>
+                <div className="metric-label">{m.label}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div className="section" style={{marginBottom:0}}>
+          <div className="sec-eyebrow">Execution Plan</div>
+          <h2 className="sec-h">Three months to<br/><em>critical mass.</em></h2>
+          <div className="roadmap">
+            {roadmap.map((r,i) => (
+              <div key={i} className="rm-item">
+                <div className="rm-left">
+                  <div className="rm-n">{r.n}</div>
+                  <div className="rm-phase">{r.phase}</div>
+                </div>
+                <div>
+                  <div className="rm-title">{r.title}</div>
+                  <div className="rm-desc">{r.desc}</div>
+                  <div className="rm-bullets">
+                    {r.bullets.map((b,j) => (
+                      <div key={j} className="rm-bullet">{b}</div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+      </div>
     </div>
   );
 }
 
-/* âââ App âââ */
+/* ââ ABOUT ââââââââââââââââââââââââââââââââââââââââââââ */
+function About() {
+  return (
+    <div className="about-section">
+      <div className="about-inner">
+        <div className="about-glow"/>
+        <div className="about-eyebrow">A note from Natalie</div>
+        <div className="about-q">
+          "I have spent my career at the intersection of culture, community, and technology.
+          I know how to walk into a room and understand its social architecture immediately â
+          who the connectors are, who the trust-holders are, and how to make something new
+          feel like it has always belonged there.
+          <br/><br/>
+          I believe the best community strategy is not the one that reaches the most people.
+          It is the one that reaches exactly the right people â and makes them feel that
+          Sophia was built for them. Because it was.
+          <br/><br/>
+          I would love to build this."
+        </div>
+        <div className="about-rule"/>
+        <div className="about-name">Natalie Dayan</div>
+        <div className="about-email">nataliedayan34@gmail.com</div>
+      </div>
+    </div>
+  );
+}
+
+/* ââ APP ââââââââââââââââââââââââââââââââââââââââââââââ */
 function App() {
   return (
     <>
       <div className="hero">
-        <div className="hero-badge">â¦ Community &amp; Growth Lead Â· Sophia</div>
-        <h1>Sophia does not acquire members.<br/><em>It admits them.</em></h1>
-        <p className="hero-sub">A community and growth strategy for the world's most intelligent matchmaker. By Natalie Dayan.</p>
+        <div className="hero-orb-a"/>
+        <div className="hero-orb-b"/>
+        <div className="hero-line"/>
+        <div className="hero-topbar">
+          <div className="hero-brand">â¦ Sophia</div>
+          <div className="hero-role-tag">Community &amp; Growth Lead â 2026</div>
+        </div>
+        <div className="hero-body">
+          <div className="hero-eyebrow">Application â Natalie Dayan</div>
+          <h1 className="hero-h1">
+            <span>Sophia does not</span>
+            <span>acquire members.</span>
+            <span><em>It admits them.</em></span>
+          </h1>
+          <p className="hero-sub">
+            A community and growth strategy for the world's most intelligent matchmaker.
+          </p>
+        </div>
+        <div className="hero-scroll">
+          <div className="hero-scroll-line"/>
+          Scroll
+        </div>
+      </div>
+
+      <div className="cards-section">
+        <div className="cards-left">
+          <div className="cl-label">The Strategy</div>
+          <h2 className="cl-h">Six slides.<br/>One coherent plan.</h2>
+          <p className="cl-p">
+            A growth strategy for Sophia must be built on trust, not traffic. Click through to see how I would approach it â from member psychology to the connector program to the first 90 days on the ground.
+          </p>
+          <div style={{marginTop:'auto'}}>
+            <div className="cl-count">6</div>
+            <div className="cl-count-label">Strategy Slides</div>
+          </div>
+        </div>
         <StrategyDemo/>
       </div>
+
+      <Thesis/>
       <Proposal/>
+      <About/>
+
       <footer>Natalie Dayan &nbsp;Â·&nbsp; Community &amp; Growth Lead Application &nbsp;Â·&nbsp; Sophia 2026</footer>
     </>
   );
